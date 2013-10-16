@@ -1,5 +1,6 @@
 <div align="center"><h2>CloudConvert API .NET Wrapper</h2></div>
 
+<h6>Update [16:10/2013] - Added the methods to delete and cancel a conversion.</h6>
 =========================
 <h3><b>How to use:</b></h3>
 
