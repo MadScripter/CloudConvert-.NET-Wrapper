@@ -45,4 +45,52 @@ api.GetStatus("The process URL which was created in step 3");
 api.ListProcesses();
 ```
 
+For the options here's a list:
+<pre>
+// Video - Audio formats
+video_codec
+video_bitrate
+video_resolution
+video_ratio
+video_fps
+video_crf
+video_qscale
+		
+audio_codec
+audio_bitrate
+audio_frequency
+audio_normalize
+audio_qscale
+		
+trim_from
+trim_to
+
+// azw - azw3 format	
+outputprofile
+authors
+title
+
+// Image formats		
+resize
+resizemode
+rotate
+quality
+
+// djvu format
+density
+
+//odt format	
+page_range
+password
+
+// dwg format		
+autocad_version
+
+// pdf to html	
+no_images
+
+// PSD format	
+mergelayers
+</pre>
+
 <div align="center"><i><b>More information can be found here:</b></i> https://cloudconvert.org/page/api</div>
