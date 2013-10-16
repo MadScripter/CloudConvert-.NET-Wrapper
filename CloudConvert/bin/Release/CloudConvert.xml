@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CloudConvert</name>
+    </assembly>
+    <members>
+        <member name="M:MadScripterWrappers.CloudConvert.#ctor(System.String)">
+            <param name="apikey">The API key which can be found here: https://cloudconvert.org/user/profile</param>
+        </member>
+        <member name="M:MadScripterWrappers.CloudConvert.GetProcessURL(System.String,System.String)">
+            <summary>
+            Creates a new Process ID.
+            </summary>
+            <param name="inputFormat">Current format of the file.</param>
+            <param name="outputFormat">Output format, to which the file should be converted.</param>
+            <returns>The URL to upload a file, check the status of a conversion and download the converted file.</returns>
+        </member>
+        <member name="M:MadScripterWrappers.CloudConvert.UploadFile(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Uploads a file for conversion.
+            </summary>
+            <param name="processUrl">The URL to upload a file which you get using the GetProcessURL method.</param>
+            <param name="filePath">Path to the file which will be converted.</param>
+            <param name="outputFormat">Output format, to which the file should be converted.</param>
+            <param name="email">E-mail address which is notified after the conversion is finished.</param>
+            <param name="options">Conversion type specific options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MadScripterWrappers.CloudConvert.GetStatus(System.String)">
+            <summary>
+            Gets the status of a conversion.
+            </summary>
+            <param name="processUrl">The URL to upload a file which you get using the GetProcessURL method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MadScripterWrappers.CloudConvert.ListProcesses">
+            <summary>
+            Lists all the running conversions.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MadScripterWrappers.ConversionStatus">
+            <summary>
+            The class for deserializing the conversion status.
+            </summary>
+        </member>
+        <member name="T:MadScripterWrappers.ListRC">
+            <summary>
+            The class for deserializing the list of running processes.
+            </summary>
+        </member>
+    </members>
+</doc>
