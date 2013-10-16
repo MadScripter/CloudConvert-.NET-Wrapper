@@ -174,6 +174,50 @@ namespace MadScripterWrappers
 		}
 		
 		/// <summary>
+		/// Cancels a running conversion
+		/// </summary>
+		/// <param name="processUrl">The URL to upload a file which you get using the GetProcessURL method.</param>
+		/// <returns></returns>
+		public string CancelConversion(string processUrl)
+		{
+			try
+			{
+				using(WebClient client = new WebClient())
+				{
+					client.Headers["Content-Type"] = "application/www-x-form-urlencoded";
+					
+					return client.DownloadString(string.Format("{0}/cancel", processUrl));
+				}
+			}
+			catch(Exception e)
+			{
+				return e.Message;
+			}
+		}
+		
+		/// <summary>
+		/// Deletes a finished or an aborted conversion (This is irreversible).
+		/// </summary>
+		/// <param name="processUrl">The URL to upload a file which you get using the GetProcessURL method.</param>
+		/// <returns></returns>
+		public string DeleteConversion(string processUrl)
+		{
+			try
+			{
+				using(WebClient client = new WebClient())
+				{
+					client.Headers["Content-Type"] = "application/www-x-form-urlencoded";
+					
+					return client.DownloadString(string.Format("{0}/delete", processUrl));
+				}
+			}
+			catch(Exception e)
+			{
+				return e.Message;
+			}
+		}
+		
+		/// <summary>
 		/// Lists all the running conversions.
 		/// </summary>
 		/// <returns></returns>
