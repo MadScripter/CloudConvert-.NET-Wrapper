@@ -47,7 +47,7 @@ api.ListProcesses();
 
 For the options here's a list:
 <pre>
-// Video - Audio formats
+<b>// Video - Audio formats</b>
 video_codec
 video_bitrate
 video_resolution
@@ -65,31 +65,31 @@ audio_qscale
 trim_from
 trim_to
 
-// azw - azw3 format	
+<b>// azw - azw3 format</b>
 outputprofile
 authors
 title
 
-// Image formats		
+<b>// Image formats</b>		
 resize
 resizemode
 rotate
 quality
 
-// djvu format
+<b>// djvu format</b>
 density
 
-//odt format	
+<b>// odt format</b>	
 page_range
 password
 
-// dwg format		
+<b>// dwg format</b>		
 autocad_version
 
-// pdf to html	
+<b>// pdf to html</b>	
 no_images
 
-// PSD format	
+<b>// PSD format</b>	
 mergelayers
 </pre>
 
