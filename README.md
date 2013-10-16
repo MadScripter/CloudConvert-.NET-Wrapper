@@ -31,7 +31,7 @@ Dictionary<string, string> options = new Dictionary<string, string>()
 }
 ```
 
-<i><u>Note:</u> The email and options are optional parameters.<i>
+<i><u>Note:</u> The email and options are optional parameters.<i> 
 
 <div align="center"><u>Formats can be found here: https://cloudconvert.org/formats</u></div>
 <h5>Getting the status of a conversion:</h5>
