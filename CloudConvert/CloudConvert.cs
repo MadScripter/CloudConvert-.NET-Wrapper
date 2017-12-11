@@ -274,7 +274,7 @@ namespace MadScripterWrappers
 							System.Net.WebClient wb = new System.Net.WebClient();
 							byte[] data = wb.DownloadData(outputFileURL);
 
-							//now attempt to delete the file from a new thread while the current thread returns
+							//now request for the converted file to be deleted from Cloudconvert server
 							if (deleteAfterConvert)
 							{
 								DeleteConversion(processURL);
