@@ -95,9 +95,8 @@ mergelayers
 </pre>
 
 5 - Download completed file:<br>
+Crude method to download file, please review before using. This method will block until an error occurs or the file is downloaded and returned as a byte[].<br>
 ```csharp
-Crude method to download file, please review before using. This method will block until an error occurs or the file is downloaded and returned as a byte[].
-
 //Usage
 DownloadFile("The returned process URL from step 3", int pollingDelayMilliseconds, bool deleteAfterConvert);
 //Example:
