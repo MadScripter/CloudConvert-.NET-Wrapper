@@ -38,6 +38,7 @@ namespace MadScripterWrappers
 		
 		private string _apikey;
 		private string _url;
+		private string lastResult;
 		
 		/// <param name="apikey">The API key which can be found here: https://cloudconvert.org/user/profile</param>
 		public CloudConvert(string apikey)
@@ -141,7 +142,8 @@ namespace MadScripterWrappers
 						                           filePath);
 					}
 					
-					return Encoding.UTF8.GetString(result, 0, result.Length);
+					lastResult = Encoding.UTF8.GetString(result, 0, result.Length);
+					return lastResult;
 
 				}
 			}
@@ -236,6 +238,64 @@ namespace MadScripterWrappers
 			{
 				return e.Message;
 			}
+		}
+		
+		/// <summary>
+		/// Crude method to download file. Please review before using.
+		/// This method will block until an error occurs or the file is downloaded.
+		/// In the event of an error a null value will be returned.
+		/// </summary>
+		/// <returns></returns>
+		public byte[] DownloadFile(string processURL, int pollingDelayMilliseconds, bool deleteAfterConvert)
+		{
+			try
+			{
+				string result = lastResult;
+				string processResult = GetStatus(processURL);
+				//check for initial fail.
+				if (processResult.Contains("\"step\":\"error\""))
+				{
+					return null;
+				}
+				else
+				{
+					//Extract download link from last result
+					string outputFileURL = lastResult + "";
+					String startString = "\"output\":{\"url\":\"";
+					outputFileURL = outputFileURL.Substring(outputFileURL.IndexOf(startString) + startString.Length);
+					outputFileURL = "http:" + outputFileURL.Substring(0, outputFileURL.IndexOf("\"}"));
+
+					while (true)
+					{
+						processResult = GetStatus(processURL);
+						if (processResult.Contains("\"step\":\"finished\""))
+						{
+							//download file
+							System.Net.WebClient wb = new System.Net.WebClient();
+							byte[] data = wb.DownloadData(outputFileURL);
+
+							//now attempt to delete the file from a new thread while the current thread returns
+							if (deleteAfterConvert)
+							{
+								DeleteConversion(processURL);
+							}
+							return data;
+						}
+						else if (processResult.Contains("\"step\":\"error\""))
+						{
+							Console.Out.WriteLine("Conversion of file failed: " + processResult.Substring(processResult.IndexOf("message"), processResult.IndexOf("step")));
+							break;
+						}
+						System.Threading.Thread.Sleep(pollingDelayMilliseconds);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.Out.WriteLine("DownloadFile stack trace:\r\n" + ex.StackTrace);
+			}
+			//return null for a failed download
+			return null;
 		}
 	}
 	
