@@ -1,6 +1,6 @@
 <div align="center"><h2>CloudConvert API .NET Wrapper</h2></div>
 
-<h6>Update [16/10/2013] - Added the methods to delete and cancel a conversion.</h6>
+<h6>Update [11/12/2017] - Added the methods to download converted file.</h6>
 =========================
 <h3><b>How to use:</b></h3>
 
@@ -93,5 +93,14 @@ no_images
 <b>// PSD format</b>	
 mergelayers
 </pre>
+
+5 - Download completed file:<br>
+Crude method to download file, please review before using. This method will block until an error occurs or the file is downloaded and returned as a byte[].<br>
+```csharp
+//Usage
+DownloadFile("The returned process URL from step 3", int pollingDelayMilliseconds, bool deleteAfterConvert);
+//Example:
+DownloadFile(myProcessURL, 1000, true);
+```
 
 <div align="center"><i><b>More information can be found here:</b></i> https://cloudconvert.org/page/api</div>
